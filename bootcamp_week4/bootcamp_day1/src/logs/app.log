@@ -1,0 +1,8 @@
+{"level":"info","message":"✔ Middlewares loaded","timestamp":"2025-11-26T06:36:15.123Z"}
+{"level":"info","message":"✔ Routes mounted","timestamp":"2025-11-26T06:36:15.125Z"}
+{"level":"info","message":"🚀 Server started on port 5000","timestamp":"2025-11-26T06:36:15.128Z"}
+{"level":"info","message":"✔ Database connected","timestamp":"2025-11-26T06:36:15.142Z"}
+{"level":"info","message":"✔ Middlewares loaded","timestamp":"2025-11-26T06:39:04.742Z"}
+{"level":"info","message":"✔ Routes mounted","timestamp":"2025-11-26T06:39:04.744Z"}
+{"level":"info","message":"🚀 Server started on port 5000","timestamp":"2025-11-26T06:39:04.746Z"}
+{"level":"info","message":"✔ Database connected","timestamp":"2025-11-26T06:39:04.761Z"}
