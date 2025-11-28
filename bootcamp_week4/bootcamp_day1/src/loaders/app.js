@@ -1,24 +1,16 @@
+// src/loaders/app.js
 const express = require("express");
-const cors = require("cors");
-const helmet = require("helmet");
-const morgan = require("morgan");
-const configLoader = require("../config");
-const dbLoader = require("./db");
-const logger = require("../utils/logger");
-const routes = require("../routes");
-
 const app = express();
-
-configLoader();           
-dbLoader();
+const productRoutes = require("../routes/product.routes");
 
 app.use(express.json());
-app.use(cors());
-app.use(helmet());
-app.use(morgan("dev"));
-logger.info("✔ Middlewares loaded");
 
-app.use("/api", routes);
-logger.info("✔ Routes mounted");
+// Routes
+app.use("/api/products", productRoutes);
 
-module.exports = { app };
+// Optional: catch-all 404 handler
+app.use((req, res, next) => {
+  res.status(404).json({ success: false, message: "Route not found" });
+});
+
+module.exports = app;
