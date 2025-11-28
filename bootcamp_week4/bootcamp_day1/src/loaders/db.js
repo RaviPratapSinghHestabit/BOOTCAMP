@@ -1,12 +1,16 @@
 const mongoose = require("mongoose");
-const logger = require("../utils/logger");
+const dotenv = require("dotenv");
 
-module.exports = async () => {
-  try {
-    await mongoose.connect(process.env.MONGO_URI);
-    logger.info("✔ Database connected");
-  } catch (err) {
-    logger.error("❌ DB connection failed", err);
-    process.exit(1);
-  }
-};
+dotenv.config({ path: `.env.${process.env.NODE_ENV}` });
+
+const MONGO_URI = process.env.MONGO_URI;
+
+if (!MONGO_URI) {
+  console.error("❌ MONGO_URI not defined");
+  process.exit(1);
+}
+
+mongoose
+  .connect(MONGO_URI)
+  .then(() => console.log("✅ MongoDB connected"))
+  .catch(err => console.error("❌ MongoDB connection failed:", err));

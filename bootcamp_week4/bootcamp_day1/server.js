@@ -1,8 +1,7 @@
-const { app } = require('./src/loaders/app');
-const logger = require('./src/utils/logger');
+require("dotenv").config({ path: `.env.${process.env.NODE_ENV}` });
+require("./src/loaders/db"); // make sure MongoDB connects before starting server
 
+const app = require("./src/loaders/app");
 const PORT = process.env.PORT || 5000;
 
-app.listen(PORT, () => {
-  logger.info(`🚀 Server started on port ${PORT}`);
-});
+app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
