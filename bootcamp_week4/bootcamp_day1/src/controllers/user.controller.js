@@ -1,15 +1,27 @@
 const UserRepository = require("../repositories/user.repository");
+const { addEmailJob } = require("../jobs/queues/email.queue");
 
 exports.createUser = async (req, res) => {
   try {
     const user = await UserRepository.create(req.body);
     const obj = user.toObject();
     delete obj.password;
-    res.json(obj);
+
+    await addEmailJob({
+      to: user.email,
+      subject: "Welcome to our platform!",
+      body: `Hello ${user.firstName}, welcome aboard!`
+    });
+
+    res.json({
+      message: "User created and welcome email queued",
+      user: obj
+    });
   } catch (err) {
     res.status(400).json({ error: err.message });
   }
 };
+
 
 exports.getUser = async (req, res) => {
   try {
@@ -37,4 +49,16 @@ exports.getUsersPaginated = async (req, res) => {
   } catch (err) {
     res.status(400).json({ error: err.message });
   }
+};
+
+exports.sendWelcomeEmail = async (req, res) => {
+  const { email } = req.body;
+
+  await addEmailJob({
+    to: email,
+    subject: "Welcome to our platform!",
+    body: "Hello, welcome aboard!"
+  });
+
+  res.json({ message: "Email job queued successfully" });
 };

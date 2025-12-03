@@ -12,4 +12,14 @@ const logger = createLogger({
   ],
 });
 
-module.exports = logger;
+function info(message, meta = {}) {
+  const logMsg = meta.requestId ? `[${meta.requestId}] ${message}` : message;
+  console.log(logMsg, meta);
+}
+
+function error(message, meta = {}) {
+  const logMsg = meta.requestId ? `[${meta.requestId}] ${message}` : message;
+  console.error(logMsg, meta);
+}
+
+module.exports = { info, error ,logger};
