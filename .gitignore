@@ -1,1 +1,6 @@
 node_modules/
+# SSL Certificates
+bootcamp_week5/bootcamp_day4/nginx/certs/
+*.pem
+*.key
+
