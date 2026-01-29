@@ -128,7 +128,7 @@ def evaluate_models(X, y, models):
 
         if avg_scores["roc_auc"] > best_score:
             best_score = avg_scores["roc_auc"]
-            best_model_name = name
+            best_model_name = name 
 
     return results, best_model_name
 
