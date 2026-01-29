@@ -31,3 +31,7 @@ data/
 vectorstore/
 embeddings/
 chunks/
+
+quantized/
+merged_model/
+
