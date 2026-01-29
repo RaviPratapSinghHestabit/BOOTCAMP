@@ -10,3 +10,4 @@ docker ps
 
 echo "Tailing logs..."
 docker compose -f docker-compose.prod.yml logs -f
+    
