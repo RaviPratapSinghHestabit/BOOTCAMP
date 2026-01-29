@@ -1,6 +1,5 @@
 node_modules/
-# SSL Certificates
-/bootcamp_day5/.env
+.env
 bootcamp_week5/bootcamp_day5/nginx/certs
 *.pem
 *.key
@@ -16,3 +15,19 @@ venv/
 
 
 .vscode/
+
+__pycache__/
+*.pyc
+
+logs/
+*.log
+
+data/
+*.pdf
+*.npy
+*.faiss
+*.jsonl
+
+vectorstore/
+embeddings/
+chunks/
